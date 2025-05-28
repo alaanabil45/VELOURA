@@ -317,7 +317,7 @@
         }
 
         function loadCart() {
-            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
             const cartContainer = document.getElementById("cart-items");
             const totalContainer = document.getElementById("cart-total");
             let total = 0;
