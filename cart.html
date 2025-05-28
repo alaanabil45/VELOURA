@@ -221,11 +221,13 @@
         const cartItemsContainer = document.getElementById("cart-items");
         const totalPriceEl = document.getElementById("total-price");
 
-        let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         function renderCart() {
             cartItemsContainer.innerHTML = "";
             let total = 0;
+
+
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
@@ -234,25 +236,31 @@
             }
 
             cart.forEach((item, index) => {
-                total += item.price * item.quantity;
+                let itemPrice = parseFloat(item.price);
+                if (isNaN(itemPrice)) {
+                    itemPrice = 0;
+                }
+                total += itemPrice * item.quantity;
 
                 const itemDiv = document.createElement("div");
                 itemDiv.className = "cart-item";
                 itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="item-info">
-                        <h4>${item.name}</h4>
-                        <p>Price: $${item.price.toFixed(2)}</p>
-                    </div>
-                    <div class="item-controls">
-                        <button class="quantity-btn decrease" data-index="${index}">−</button>
-                        <span>${item.quantity}</span>
-                        <button class="quantity-btn increase" data-index="${index}">+</button>
-                        <button class="remove-btn" data-index="${index}">Remove</button>
-                    </div>
-                `;
+        <img src="${item.image || 'https://via.placeholder.com/100'}" alt="${item.name}">
+        <div class="item-info">
+            <h4>${item.name}</h4>
+            <p>Price: ${!isNaN(parseFloat(item.price)) ? "$" + parseFloat(item.price).toFixed(2) : item.price
+                    }</p>
+        </div>
+        <div class="item-controls">
+            <button class="quantity-btn decrease" data-index="${index}">−</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn increase" data-index="${index}">+</button>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+        </div>
+    `;
                 cartItemsContainer.appendChild(itemDiv);
             });
+
 
             totalPriceEl.textContent = `$${total.toFixed(2)}`;
 
@@ -285,9 +293,10 @@
         }
 
         function saveAndRender() {
-            localStorage.setItem("cartItems", JSON.stringify(cart));
+            localStorage.setItem("cart", JSON.stringify(cart)); // ← تم التعديل هنا
             renderCart();
         }
+
 
         renderCart();
     </script>
