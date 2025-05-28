@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon"
+        href="https://wepik.com/api/image/local/156594885/9f016818-d842-4ad9-a9fa-11fe8f934b48?expires=1748318400&thumb=0&transparent=0&signature=f4ae20e2c2b2ff025eb599f8b276573481fca8142952b9df1b568891173353d2">
+    <title>VELOURA | Checkout </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .body {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .checkout-form {
+            margin-top: 30px;
+        }
+
+        .checkout-form input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+
+        .checkout-form button {
+            padding: 10px 20px;
+            background-color: #222;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-form button:hover {
+            background-color: #3B503E;
+        }
+
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #3B503E;
+            color: wheat;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 1s, bottom 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            top: 50px;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-option {
+            display: flex;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            width: 150px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background-color: #f4f4f4;
+            border-color: #aaa;
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .payment-image {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .payment-option input[type="radio"]:checked+.payment-method {
+            background-color: #d2d2d2;
+            color: rgb(0, 0, 0);
+            border-radius: 10px;
+            border: #222 1px solid;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header style="background: linear-gradient(to bottom, rgba(45, 56, 46, 1), transparent 100%);">
+        <img class="logo"
+            src="https://wepik.com/api/image/local/156594885/9f016818-d842-4ad9-a9fa-11fe8f934b48?expires=1748318400&thumb=0&transparent=0&signature=f4ae20e2c2b2ff025eb599f8b276573481fca8142952b9df1b568891173353d2"
+            alt="logo">
+        <h3>VELOURA</h3>
+        <nav class="links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="icons">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <div class="user-menu">
+                <span class="user-icon" id="userIcon"><i class="fa fa-user"></i></span>
+                <div class="dropdown" id="dropdownMenu"></div>
+            </div>
+        </div>
+
+        <script>
+            const userIcon = document.getElementById("userIcon");
+            const dropdown = document.getElementById("dropdownMenu");
+            const username = localStorage.getItem("username");
+
+            if (username) {
+                dropdown.innerHTML = `
+          <p style="margin: 0 0 5px 0; padding: 5px 10px; font-weight: bold; color:#1e1e1e;"> ${username}</p>
+          <a href="login.html" id="logoutBtn">Logout</a>
+        `;
+                document.addEventListener("click", function (e) {
+                    if (e.target.id === "logoutBtn") {
+                        firebase.auth().signOut().then(() => {
+                            localStorage.removeItem("username");
+                            window.location.reload();
+                        });
+                    }
+                });
+            } else {
+                dropdown.innerHTML = `
+          <a href="login.html">Login</a>
+          <a href="register.html">Register</a>
+        `;
+            }
+
+            userIcon.addEventListener("click", function (e) {
+                dropdown.classList.toggle("show");
+                e.stopPropagation();
+            });
+
+            document.addEventListener("click", function (e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove("show");
+                }
+            });
+        </script>
+    </header>
+
+    <div class="body">
+        <h1>Checkout</h1>
+        <div id="cart-items"></div>
+        <div class="total" id="cart-total">Total: $0.00</div>
+
+        <form class="checkout-form" id="checkout-form">
+            <h2>Shipping Details</h2>
+            <input type="text" placeholder="Full Name" id="name" required>
+            <input type="text" placeholder="Address" id="address" required>
+            <input type="tel" placeholder="Phone Number" id="phone" required>
+
+            <h2>Payment Method</h2>
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="Cash" checked>
+                    <div class="payment-method">
+                        <img src="https://cdn-icons-png.freepik.com/256/5268/5268592.png" alt="Cash on Delivery"
+                            class="payment-image">
+                        <span>Cash on Delivery</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="Credit Card">
+                    <div class="payment-method">
+                        <img src="https://cdn-icons-png.freepik.com/256/4783/4783051.png" alt="Credit Card"
+                            class="payment-image">
+                        <span>Credit Card</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="Vodafone Cash">
+                    <div class="payment-method">
+                        <img src="https://cdn-icons-png.freepik.com/256/13901/13901906.png" alt="Vodafone Cash"
+                            class="payment-image">
+                        <span>Vodafone Cash</span>
+                    </div>
+                </label>
+            </div>
+
+            <div id="creditDetails" class="payment-details">
+                <h4>Credit Card Details:</h4>
+                <input type="text" placeholder="Card name">
+                <input type="text" placeholder="**** **** **** ****">
+                <input type="text" placeholder="MM/YY">
+                <input type="text" placeholder="CVV">
+            </div>
+
+            <div id="vodafoneDetails" class="payment-details">
+                <h4>Vodafone Cash Number:</h4>
+                <input type="text" placeholder="010xxxxxxxx">
+            </div>
+
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-logo">VELOURA</h3>
+                <p>Pure, organic skincare designed for your natural beauty.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Join Our Newsletter</h4>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.x.com"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2025 VELOURA. All rights reserved.</p>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.className = "toast show";
+            setTimeout(() => {
+                toast.className = "toast";
+            }, duration);
+        }
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+            const cartContainer = document.getElementById("cart-items");
+            const totalContainer = document.getElementById("cart-total");
+            let total = 0;
+            cartContainer.innerHTML = "";
+            cart.forEach(item => {
+                const itemEl = document.createElement("div");
+                itemEl.className = "cart-item";
+                itemEl.innerHTML = `
+          <div style="display: flex; align-items: center;">
+            <img src="${item.image}" alt="${item.name}">
+            <span>${item.name} (x${item.quantity})</span>
+          </div>
+          <div>$${(item.price * item.quantity).toFixed(2)}</div>
+        `;
+                cartContainer.appendChild(itemEl);
+                total += item.price * item.quantity;
+            });
+            totalContainer.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        document.getElementById("checkout-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const address = document.getElementById("address").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            if (!name || !address || !phone) {
+                showToast("Please fill in all fields.");
+                return;
+            }
+            showToast(`Thank you ${name}! Your order has been placed.✔️`);
+            localStorage.removeItem("cartItems");
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000);
+        });
+
+        const options = document.querySelectorAll('.payment-option');
+        const creditDetails = document.getElementById("creditDetails");
+        const vodafoneDetails = document.getElementById("vodafoneDetails");
+
+        document.querySelectorAll('.payment-option input[type="radio"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const value = input.value;
+                creditDetails.style.display = value === "Credit Card" ? "block" : "none";
+                vodafoneDetails.style.display = value === "Vodafone Cash" ? "block" : "none";
+            });
+        });
+
+        loadCart();
+    </script>
+</body>
+
+</html>
