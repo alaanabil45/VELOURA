@@ -12,18 +12,6 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ## 📂 Project Structure
 
-VELOURA/
-├── index.html # Home Page
-├── products.html # Shop/Product List Page
-├── contact.html # Contact Us Page
-├── register.html # User Registration Page
-├── login.html # User Login Page
-├── cart.html # Shopping Cart Page
-├── checkout.html # Checkout Page
-├── style.css # Global and Component Styling
-├── README.md # Project Documentation
-
-
 ---
 
 ## ✅ Features Overview
@@ -81,59 +69,59 @@ VELOURA/
    git clone https://github.com/your-username/veloura.git
    cd veloura
 
-🔍 Folder and Code Highlights
-cart.html
-Dynamically renders items from localStorage
+## 🔍 Folder and Code Highlights
+1. cart.html
+- Dynamically renders items from localStorage
 
-Fully functional cart with:
+- Fully functional cart with:
 
-Increase/Decrease quantity
+- Increase/Decrease quantity
 
-Remove button
+- Remove button
 
-Total price calculation
+- Total price calculation
 
-Toast component for user feedback (hidden by default)
+- Toast component for user feedback (hidden by default)
 
-login.html & register.html
-Firebase-powered forms
+2. login.html & register.html
+- Firebase-powered forms
 
-Stores logged-in username to localStorage for display in header
+- Stores logged-in username to localStorage for display in header
 
-style.css
+3. style.css
 Styles for:
 
-Forms
+- Forms
 
-Buttons (hover effects)
+- Buttons (hover effects)
 
-Cart items
+- Cart items
 
-Footer layout
+- Footer layout
 
-Responsive breakpoints
+- Responsive breakpoints
 
-🧪 Future Enhancements
-Connect cart and checkout to backend for real orders.
+## 🧪 Future Enhancements
+- Connect cart and checkout to backend for real orders.
 
-Add search and filter functionality to products.
+- Add search and filter functionality to products.
 
-Implement Firebase Firestore or Realtime Database for product data.
+- Implement Firebase Firestore or Realtime Database for product data.
 
-Add user profile page with order history.
+- Add user profile page with order history.
 
-Integrate real newsletter email service (like Mailchimp or EmailJS).
+- Integrate real newsletter email service (like Mailchimp or EmailJS).
 
-Add animations or loading indicators for better UX.
+- Add animations or loading indicators for better UX.
 
-Implement "Clear Cart" button.
+- Implement "Clear Cart" button.
 
-📄 License
-This project is for educational and personal learning purposes. You may reuse or adapt it as needed.
+## 📄 License
+This project is for educational and personal learning purposes.
 
-🙌 Acknowledgements
-Firebase (Google)
+## 🙌 Acknowledgements
+- Firebase (Google)
 
-Font Awesome
+- Font Awesome
 
-Wepik (for logo/image)
+- Wepik (for logo/image)
