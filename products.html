@@ -313,27 +313,31 @@
 
                         container.querySelectorAll(".add-to-cart").forEach(btn => {
                             btn.addEventListener("click", () => {
+                                const name = btn.getAttribute("data-name");
+                                const price = btn.getAttribute("data-price");
                                 const card = btn.closest(".product-card");
-                                const name = card.querySelector("h4").textContent;
-                                const price = card.querySelector("p").textContent;
                                 const quantity = parseInt(card.querySelector(".quantity").textContent);
-                                addToCart(name, price, quantity);
+                                const image = card.querySelector("img").src; // خدي صورة المنتج من الكارد
+                                addToCart(name, price, quantity, image);
                                 showToast("Product added to cart ✔️");
                             });
+
                         });
+
                     }
 
-                    function addToCart(name, price, quantity) {
+                    function addToCart(name, price, quantity, image) {
                         let cart = JSON.parse(localStorage.getItem("cart")) || [];
                         const existingItem = cart.find(item => item.name === name);
                         if (existingItem) {
                             existingItem.quantity += quantity;
                         } else {
-                            cart.push({ name, price, quantity });
+                            cart.push({ name, price: parseFloat(price), quantity, image });
                         }
                         localStorage.setItem("cart", JSON.stringify(cart));
-                        updateCartCount(); // 🔥 ضروري هنا
+                        updateCartCount();
                     }
+
 
 
                     function showToast(message) {
@@ -457,6 +461,7 @@
 
                     // شغّليه أول ما الصفحة تفتح
                     updateCartCount();
+
 
                     // تحميل المنتجات لجميع الأقسام
                     ["face", "body", "hair", "sets"].forEach(category => loadProducts(category));
