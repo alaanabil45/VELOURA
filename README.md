@@ -10,7 +10,11 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ---
 
-## 📂 Project Structure
+## 📦 How to Run Locally
+
+1. Clone this repository:
+   ```bash
+   https://alaanabil45.github.io/VELOURA/
 
 ---
 
@@ -62,11 +66,7 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ---
 
-## 📦 How to Run Locally
 
-1. Clone this repository:
-   ```bash
-   https://alaanabil45.github.io/VELOURA/
 
 ## 🔍 Folder and Code Highlights
 1. cart.html
