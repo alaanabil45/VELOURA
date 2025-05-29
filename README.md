@@ -6,7 +6,7 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ## 🔗 Live Demo
 
-> _[[My Project Demo](https://drive.google.com/file/d/1FpfVRWS7UuMHDeMaXukSkblth-fgS07R/view?usp=sharing)]_
+> _[[Click Kere To The Project Live Demo](https://drive.google.com/file/d/1FpfVRWS7UuMHDeMaXukSkblth-fgS07R/view?usp=sharing)]_
 
 ---
 
