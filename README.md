@@ -14,7 +14,7 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 1. Clone this repository:
    ```bash
-    https://alaanabil45.github.io/VELOURA/
+     https://alaanabil45.github.io/VELOURA/
 
 ---
 
