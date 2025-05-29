@@ -1,159 +1,162 @@
+<<<<<<< HEAD=======>>>>>>> f1db9ce (Add favicon using logo.png)
+    <!DOCTYPE html>
+    <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
+    <head>
+        <title>VELOURA | LogIn</title>
+        <link rel="icon" type="image/png" href="img/logo.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
-<head>
-    <title>VELOURA | LogIn</title>
-    <link rel="icon" type="image/png" href="img/logo.png" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script>
+            // Initialize Firebase here مباشرة في الـ HTML وليس في ملف منفصل
+            const firebaseConfig = {
+                apiKey: "AIzaSyCmbz5xWeZBMEcET0wKlABAkHjIw6zQ8lE",
+                authDomain: "veloura-skincare.firebaseapp.com",
+                projectId: "veloura-skincare",
+                storageBucket: "veloura-skincare.firebasestorage.app",
+                messagingSenderId: "584061542888",
+                appId: "1:584061542888:web:813e8d9efe19a9abf6845d",
+                measurementId: "G-VM9C914JT4"
+            };
 
-    <script>
-        // Initialize Firebase here مباشرة في الـ HTML وليس في ملف منفصل
-        const firebaseConfig = {
-            apiKey: "AIzaSyCmbz5xWeZBMEcET0wKlABAkHjIw6zQ8lE",
-            authDomain: "veloura-skincare.firebaseapp.com",
-            projectId: "veloura-skincare",
-            storageBucket: "veloura-skincare.firebasestorage.app",
-            messagingSenderId: "584061542888",
-            appId: "1:584061542888:web:813e8d9efe19a9abf6845d",
-            measurementId: "G-VM9C914JT4"
-        };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+            // Initialize Firestore
+            const db = firebase.firestore();
+        </script>
 
-        // Initialize Firestore
-        const db = firebase.firestore();
-    </script>
+    </head>
 
-</head>
+    <body>
+        <div class="upper">
+            <header
+                style="background: linear-gradient(to bottom, rgba(69, 86, 74, 0.7), transparent 100%); position:relative;">
+                <img class="logo" src="img/logo.png" alt="logo">
 
-<body>
-    <div class="upper">
-        <header
-            style="background: linear-gradient(to bottom, rgba(69, 86, 74, 0.7), transparent 100%); position:relative;">
-            <img class="logo"
-                src="img/logo.png"
-                alt="logo">
-            <h3>VELOURA</h3>
+                <h3>VELOURA</h3>
 
-            <nav class="links">
-                <a href="index.html">Home</a>
-                <a href="contact.html">Have A Problem? <span style="color: #96b79b;">Contact Us</span></a>
-            </nav>
+                <nav class="links">
+                    <a href="index.html">Home</a>
+                    <a href="contact.html">Have A Problem? <span style="color: #96b79b;">Contact Us</span></a>
+                </nav>
 
-            <div class="icons">
-                <div class="user-menu">
-                    <span class="user-icon" id="userIcon"><i class="fa fa-user"></i>
-                    </span>
-                    <div class="dropdown" id="dropdownMenu">
-                        <a href="login.html">Login</a>
-                        <a href="register.html">Register</a>
+                <div class="icons">
+                    <div class="user-menu">
+                        <span class="user-icon" id="userIcon"><i class="fa fa-user"></i>
+                        </span>
+                        <div class="dropdown" id="dropdownMenu">
+                            <a href="login.html">Login</a>
+                            <a href="register.html">Register</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </header>
-        <div class="content">
-            <div class="leftside">
-                <img class="im"
-                    src="https://images.unsplash.com/photo-1612817288765-6d2b644c762e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Becouse it is you..">
-            </div>
+            </header>
+            <div class="content">
+                <div class="leftside">
+                    <img class="im"
+                        src="https://images.unsplash.com/photo-1612817288765-6d2b644c762e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Becouse it is you..">
+                </div>
 
-            <div class="rightside">
-                <h2>LogIn</h2>
-                <form id="loginForm">
-                    <h3 style="text-align: left;">Email Address</h3>
-                    <div class="input-icon">
-                        <i class="fa fa-envelope"></i>
-                        <input type="text" id="email" placeholder="Enter Email " required>
-                    </div>
+                <div class="rightside">
+                    <h2>LogIn</h2>
+                    <form id="loginForm">
+                        <h3 style="text-align: left;">Email Address</h3>
+                        <div class="input-icon">
+                            <i class="fa fa-envelope"></i>
+                            <input type="text" id="email" placeholder="Enter Email " required>
+                        </div>
 
-                    <h3 style="text-align: left;">Password</h3>
-                    <div class="input-icon password-field">
-                        <i class="fa fa-lock"></i>
-                        <input type="password" id="password" placeholder="Enter Password" required>
-                    </div>
+                        <h3 style="text-align: left;">Password</h3>
+                        <div class="input-icon password-field">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter Password" required>
+                        </div>
 
-                    <div class="chk">
-                        <input id="checkk" type="checkbox">
-                        <label for="checkk" id="al">Keep me logged in</label>
-                    </div>
+                        <div class="chk">
+                            <input id="checkk" type="checkbox">
+                            <label for="checkk" id="al">Keep me logged in</label>
+                        </div>
 
-                    <button type="submit">Log In</button>
+                        <button type="submit">Log In</button>
 
-                    <br>
+                        <br>
 
 
-                </form>
+                    </form>
 
-                <div class="ai">
-                    <h4> <a style="text-decoration: none;
+                    <div class="ai">
+                        <h4> <a style="text-decoration: none;
                     color :#272727;" href="contact.html">Forgot Password?</a></h4>
-                </div>
+                    </div>
 
-                <div>
-                    <h4>Don't have an account? <a href="register.html" style="text-decoration: none;
+                    <div>
+                        <h4>Don't have an account? <a href="register.html" style="text-decoration: none;
                     color :#3B503E;">Sign Up Here..</a></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-container">
-
-            <div class="footer-col">
-                <h3 class="footer-logo">VELOURA</h3>
-                <p>Pure, organic skincare designed for your natural beauty.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Shop</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Join Our Newsletter</h4>
-                <form>
-                    <input type="email" placeholder="Your Email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.x.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <footer class="footer">
+            <div class="footer-container">
 
-    </footer>
-    <div class="footer-bottom">
-        <p>&copy; 2025 VELOURA. All rights reserved.</p>
-    </div>
+                <div class="footer-col">
+                    <h3 class="footer-logo">VELOURA</h3>
+                    <p>Pure, organic skincare designed for your natural beauty.</p>
+                </div>
 
-    <script src="login.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
 
-</body>
+                <div class="footer-col">
+                    <h4>Join Our Newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
 
-</html>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VELOURA. All rights reserved.</p>
+        </div>
+
+        <script src="login.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </body>
+
+    <<<<<<< HEAD </html>
+        =======
+
+    </html>
+    >>>>>>> f1db9ce (Add favicon using logo.png)

@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 6001909 (Add favicon using logo.png)
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png"
-        href="img/logo.png">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <title>VELOURA | Checkout </title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -159,59 +154,60 @@
 <body>
 
     <header style="background: linear-gradient(to bottom, rgba(45, 56, 46, 1), transparent 100%);">
-        <img class="logo"
-            src="img/logo.png"
-            alt="logo">
-        <h3>VELOURA</h3>
-        <nav class="links">
-            <a href="index.html">Home</a>
-            <a href="products.html">Shop</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
-        <div class="icons">
-            <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-            <div class="user-menu">
-                <span class="user-icon" id="userIcon"><i class="fa fa-user"></i></span>
-                <div class="dropdown" id="dropdownMenu"></div>
+        <<<<<<< HEAD <img class="logo" src="img/logo.png" alt="logo">
+            =======
+            <img class="logo" src="img/logo.png" alt="logo">
+            >>>>>>> f1db9ce (Add favicon using logo.png)
+            <h3>VELOURA</h3>
+            <nav class="links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <div class="icons">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <div class="user-menu">
+                    <span class="user-icon" id="userIcon"><i class="fa fa-user"></i></span>
+                    <div class="dropdown" id="dropdownMenu"></div>
+                </div>
             </div>
-        </div>
 
-        <script>
-            const userIcon = document.getElementById("userIcon");
-            const dropdown = document.getElementById("dropdownMenu");
-            const username = localStorage.getItem("username");
+            <script>
+                const userIcon = document.getElementById("userIcon");
+                const dropdown = document.getElementById("dropdownMenu");
+                const username = localStorage.getItem("username");
 
-            if (username) {
-                dropdown.innerHTML = `
+                if (username) {
+                    dropdown.innerHTML = `
           <p style="margin: 0 0 5px 0; padding: 5px 10px; font-weight: bold; color:#1e1e1e;"> ${username}</p>
           <a href="login.html" id="logoutBtn">Logout</a>
         `;
-                document.addEventListener("click", function (e) {
-                    if (e.target.id === "logoutBtn") {
-                        firebase.auth().signOut().then(() => {
-                            localStorage.removeItem("username");
-                            window.location.reload();
-                        });
-                    }
-                });
-            } else {
-                dropdown.innerHTML = `
+                    document.addEventListener("click", function (e) {
+                        if (e.target.id === "logoutBtn") {
+                            firebase.auth().signOut().then(() => {
+                                localStorage.removeItem("username");
+                                window.location.reload();
+                            });
+                        }
+                    });
+                } else {
+                    dropdown.innerHTML = `
           <a href="login.html">Login</a>
           <a href="register.html">Register</a>
         `;
-            }
-
-            userIcon.addEventListener("click", function (e) {
-                dropdown.classList.toggle("show");
-                e.stopPropagation();
-            });
-
-            document.addEventListener("click", function (e) {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove("show");
                 }
-            });
-        </script>
+
+                userIcon.addEventListener("click", function (e) {
+                    dropdown.classList.toggle("show");
+                    e.stopPropagation();
+                });
+
+                document.addEventListener("click", function (e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove("show");
+                    }
+                });
+            </script>
     </header>
 
     <div class="body">
@@ -374,8 +370,8 @@
     </script>
 </body>
 
-<<<<<<< HEAD
-</html>
-=======
+<<<<<<< HEAD </html>
+    =======
+
 </html>
 >>>>>>> 6001909 (Add favicon using logo.png)
