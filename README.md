@@ -6,7 +6,7 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ## 🔗 Live Demo
 
-> _[Add your GitHub Pages / Netlify / Firebase Hosting link here if available]_
+> _[[Add your GitHub Pages / Netlify / Firebase Hosting link here if available](https://drive.google.com/file/d/1FpfVRWS7UuMHDeMaXukSkblth-fgS07R/view?usp=sharing)]_
 
 ---
 
@@ -66,8 +66,7 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/veloura.git
-   cd veloura
+   https://alaanabil45.github.io/VELOURA/
 
 ## 🔍 Folder and Code Highlights
 1. cart.html
