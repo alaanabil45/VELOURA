@@ -4,17 +4,16 @@ VELOURA is a modern, responsive e-commerce web project designed to offer a smoot
 
 ---
 
-## 🔗 Live Demo
+## 🔗 vedio
 
-> _[[Click Kere To The Project Live Demo](https://drive.google.com/file/d/1FpfVRWS7UuMHDeMaXukSkblth-fgS07R/view?usp=sharing)]_
+> _[[Click Kere To The Project vedio](https://drive.google.com/file/d/1FpfVRWS7UuMHDeMaXukSkblth-fgS07R/view?usp=sharing)]_
 
 ---
 
-## 📦 How to Run Locally
+## 📦 live Dimo
 
-1. Clone this repository:
-   ```bash
-     https://alaanabil45.github.io/VELOURA/
+> _[[Click Kere To The Project live demo](https://alaanabil45.github.io/VELOURA/)]_
+    
 
 ---
 
